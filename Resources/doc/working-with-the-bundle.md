@@ -279,14 +279,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
 use Doctrine\ORM\QueryBuilder;
-use Lexik\Bundle\FormFilterBundle\Filter\Query\QueryInterface;
+use Lexik\Bundle\FormFilterBundle\Filter\Doctrine\ORMQuery;
 
 class ItemFilterType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('name', 'filter_text', array(
-            'apply_filter' => function (QueryInterface $filterQuery, $field, $values) {
+            'apply_filter' => function (ORMQuery $filterQuery, $field, $values) {
                 if (empty($values['value'])) {
                     return null;
                 }
